@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .login-container {
+            background: linear-gradient(145deg, #1f1f1f, #141414);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.7);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 90%;
+            max-width: 450px;
+            animation: slideUp 0.5s ease-in-out;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            font-size: 26px;
+            font-weight: 600;
+        }
+
+        input, textarea {
+            padding: 12px;
+            margin: 10px 0;
+            width: 100%;
+            border: 1px solid #444;
+            border-radius: 5px;
+            background-color: #333;
+            color: #fff;
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #777;
+            outline: none;
+        }
+
+        input::placeholder, textarea::placeholder {
+            color: #bbb;
+        }
+
+        button {
+            padding: 12px;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            background-color: #444;
+            color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #555;
+            transform: translateY(-2px);
+        }
+
+        #message {
+            color: red;
+            margin-top: 10px;
+        }
+
+        .back-content {
+            display: none;
+            height: 100vh;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: #1a1a1a;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .back-content iframe {
+            height: calc(100vh - 40px);
+            width: 100%;
+            border: none;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(20px); }
+            to { transform: translateY(0); }
+        }
+
+        @media (min-width: 768px) {
+            .login-container {
+                max-width: 600px;
+                padding: 50px;
+            }
+
+            h2 {
+                font-size: 28px;
+            }
+
+            input, textarea {
+                font-size: 18px;
+            }
+
+            button {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container" id="loginContainer">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <input type="email" id="email" placeholder="Enter Email">
+            <input type="password" id="password" placeholder="Enter Password">
+            <button type="submit">Login</button>
+        </form>
+        <p id="message"></p>
+    </div>
+
+    <div class="back-content" id="backContent">
+        <iframe src="src.html" frameborder="0"></iframe>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const emailInput = document.getElementById('email').value.trim(); // Trim any whitespace
+            const passwordInput = document.getElementById('password').value.trim(); // Trim any whitespace
+            const message = document.getElementById('message');
+            const loginContainer = document.getElementById('loginContainer');
+            const backContent = document.getElementById('backContent');
+
+            // List of allowed email-password combinations
+            const users = [
+                { email: 'govindakc.np@gmail.com', password: '123' },
+                { email: 'example@example.com', password: 'password' },
+                { email: 'test@test.com', password: '123456' }
+            ];
+
+            const user = users.find(user => user.email === emailInput && user.password === passwordInput);
+
+            if (user) {
+                loginContainer.style.display = 'none'; // Hide login container
+                backContent.style.display = 'block'; // Show back content
+                message.textContent = ''; // Clear any previous error messages
+            } else {
+                message.textContent = 'Incorrect email or password. Please try again.';
+            }
+        });
+    </script>
+</body>
+</html>
