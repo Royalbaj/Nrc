@@ -2141,3 +2141,49 @@ textarea.input-field {
   }
 
 }
+/**
+   * 404
+   */
+
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  height: 100vh; 
+}
+
+.btn-secondary1 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--gold-crayola);
+  color: var(--black);
+  text-decoration: none;
+  padding: 12px 24px; 
+  border-radius: 5px; 
+  font-size: 16px; 
+  font-weight: bold; 
+  text-align: center;
+  line-height: 1.5; 
+  margin-right: 130px;
+}
+
+.btn-secondary1::before { 
+  background-color: var(--smoky-black-1); 
+}
+
+.btn-secondary1 .text-2 { 
+  color: var(--white); 
+}
+
+.has-before,
+.has-after {
+  position: relative;
+  z-index: 1;
+}
