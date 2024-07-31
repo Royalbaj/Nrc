@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+        :root {
+            --bs-white: #fff;
+            --bs-info: #0dcaf0;
+            --header-footer-gradient: linear-gradient(to right, rgb(29, 2, 108), rgb(16, 48, 92), rgb(20, 96, 49));
+            --bs-red: #dc3545;
+            --bs-gray-light: #f8f9fa;
+            --bs-text-dark: #343a40;
+            --bs-text-muted: #6c757d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: var(--bs-white);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            flex-grow: 1;
+        }
+
+        header {
+            background-image: var(--header-footer-gradient);
+            color: var(--bs-white);
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        header a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        header img {
+            max-height: 50px;
+            margin-right: 10px;
+        }
+
+        .profile-header {
+            padding: 20px;
+            text-align: center;
+            background-color: var(--bs-gray-light);
+        }
+
+        .profile-header h2 {
+            color: var(--bs-text-dark);
+            margin: 0;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .profile-content {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile-content img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 2px solid #ddd;
+            object-fit: cover;
+            margin: 0 20px 20px;
+        }
+
+        .profile-details {
+            max-width: 450px;
+            text-align: left;
+        }
+
+        .profile-details div {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .profile-details strong {
+            color: var(--bs-text-muted);
+            display: inline-block;
+            width: 180px;
+            font-weight: 600;
+        }
+
+        .profile-details span {
+            color: var(--bs-text-dark);
+            font-weight: 400;
+        }
+
+        footer {
+            background-image: var(--header-footer-gradient);
+            color: var(--bs-white);
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        footer .footer-logo img {
+            max-height: 50px;
+        }
+
+        footer .footer-info {
+            flex-grow: 1;
+            margin-top: 10px;
+        }
+
+        footer .footer-info div {
+            margin-bottom: 5px;
+        }
+
+        footer a {
+            color: var(--bs-info);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-copy {
+            margin-top: 10px;
+            text-align: center;
+            flex-basis: 100%;
+        }
+
+        .footer-copy span {
+            color: var(--bs-red);
+        }
+
+        .footer-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .footer-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            border-radius: 50%;
+            color: var(--bs-white);
+            font-size: 18px;
+            text-decoration: none;
+            width: 40px;
+            height: 40px;
+            transition: background-color 0.3s;
+        }
+
+        .call-button {
+            background-color: #28a745;
+        }
+
+        .website-button {
+            background-color: #007bff;
+        }
+
+        .call-button:hover,
+        .website-button:hover {
+            background-color: #555;
+        }
+
+        @media (max-width: 600px) {
+            .profile-content {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .profile-content img {
+                margin: 0 0 20px;
+            }
+
+            .profile-details {
+                text-align: left;
+            }
+
+            .profile-details div {
+                display: block;
+            }
+
+            .profile-details strong {
+                display: inline;
+                width: auto;
+                font-weight: 600;
+            }
+
+            .profile-details span {
+                display: inline;
+                margin-left: 5px;
+            }
+
+            header,
+            footer {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            footer .footer-logo,
+            footer .footer-info,
+            .footer-copy {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="https://oxfordcollegebutwal.edu.np/">
+            <img src="logo.png" alt="School Logo">
+        </a>
+    </header>
+
+    <div class="container">
+        <div class="profile-header">
+            <h2>Student Profile</h2>
+        </div>
+        <div class="profile-content">
+            <img src="student.jpg" alt="Student Photo">
+            <div class="profile-details">
+                <div><strong>Name:</strong> <span>John Doe</span></div>
+                <div><strong>Roll No:</strong> <span>23</span></div>
+                <div><strong>School Name:</strong> <span>XYZ High School</span></div>
+                <div><strong>Address:</strong> <span>123 Main St, Cityville</span></div>
+                <div><strong>Guardian Contact No:</strong> <span>+1234567890</span></div>
+                <div><strong>School Contact No:</strong> <span>+0987654321</span></div>
+                <div><strong>Grade:</strong> <span>10</span></div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-logo">
+            <img src="logo.png" alt="School Logo">
+        </div>
+        <div class="footer-info">
+            <div>Butwal-8, Sukkhanagar, Rupandehi</div>
+            <div>071-542599, 541363 (School), 542419 (+2)</div>
+            <div>Email: <a href="mailto:oxford.btl@gmail.com">oxford.btl@gmail.com</a></div>
+        </div>
+        <div class="footer-buttons">
+            <a href="tel:+1234567890" class="footer-button call-button" title="Call Us">
+                <i class="fas fa-phone"></i>
+            </a>
+            <a href="https://oxfordcollegebutwal.edu.np/" class="footer-button website-button" title="Visit Website">
+                <i class="fas fa-globe"></i>
+            </a>
+        </div>
+        <div class="footer-copy">
+            <span>© 2024 Oxford College. All Rights Reserved</span>
+        </div>
+    </footer>
+</body>
+
+</html>
