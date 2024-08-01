@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="assets/css/quotation.css">
+</head>
+<body>
+
+    <div class="quotation-wrapper" id="print-area">
+        <div class="quotation">
+            <div class="quotation-container">
+                <div class="quotation-head">
+                    <div class="quotation-head-top">
+                        <div class="quotation-head-top-left text-start">
+                            <img src="assets/images/logo.png">
+                        </div>
+                        <div class="quotation-head-top-right text-end">
+                            <h3>Quotation</h3>
+                        </div>
+                    </div>
+                    <div class="hr"></div>
+                    <div class="quotation-head-middle">
+                        <div class="quotation-head-middle-left text-start">
+                            <p><span class="text-bold">Date</span>: <span id="current-date"></span></p>
+                        </div>
+
+                        <div class="quotation-head-middle-right text-end">
+                            <p><span class="text-bold">Quotation No:</span>008</p>
+                        </div>
+                    </div>
+                    <div class="hr"></div>
+                    <div class="quotation-head-bottom">
+                        <div class="quotation-head-bottom-left">
+                            <ul>
+                                <li class='text-bold'>Quotation To:</li>
+                                <li>To Whom it may Concerned</li>
+                                <li>Nepal</li>
+                            </ul>
+                        </div>
+                        <div class="quotation-head-bottom-right">
+                            <ul class="text-end">
+                                <li class='text-bold'>Pay To:</li>
+                                <li>Robaj Technology</li>
+                                <li>Rupandehi, Nepal</li>
+                                <li>card@robaj.com</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="overflow-view">
+                    <div class="quotation-body">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td class="text-bold">Description</td>
+                                    <td class="text-bold">QTY</td>
+                                    <td class="text-bold">Amount</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ROBAJ Business Card</td>
+                                    <td>1</td>
+                                    <td class="text-end">Nrs. 3000/-</td>
+                                </tr>
+                                <tr>
+                                    <td>ROBAJ Business Cards</td>
+                                    <td>3</td>
+                                    <td class="text-end">Nrs. 2800/-</td>
+                                </tr>
+                                <tr>
+                                    <td>ROBAJ Business Cards</td>
+                                    <td>5</td>
+                                    <td class="text-end">Nrs. 2500/-</td>
+                                </tr>
+                                <tr>
+                                    <td>ROBAJ Business Cards</td>
+                                    <td>8</td>
+                                    <td class="text-end">Nrs. 2300/-</td>
+                                </tr>
+                                <tr>
+                                    <td>ROBAJ Business Cards</td>
+                                    <td>10</td>
+                                    <td class="text-end">Nrs. 2200/-</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="quotation-foot text-center">
+                            <p><span class="text-bold text-center">NOTE:&nbsp;</span>On purchasing 5 or more cards, you'll receive a complimentary gift card. Additionally, when you buy 10 or more cards, you'll get a special gift along with the complimentary gift card.</p>
+
+                            <div class="quotation-btns">
+                                <button type="button" class="quotation-btn" onclick="printQuotation()">
+                                    <span>
+                                        <i class="fa-solid fa-print"></i>
+                                    </span>
+                                    <span>Print</span>
+                                </button>
+                                <button type="button" class="quotation-btn" onclick="generateQRCode()">
+                                    <span>
+                                        <i class="fa-solid fa-share"></i>
+                                    </span>
+                                    <span>Share</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   <div id="qr-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="qrcode"></div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="script.js"></script>
+    <script src="./assets/js/quotation.js"></script>
+</body>
+</html>
