@@ -10,7 +10,8 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     const users = [
         { email: 'govindakc.np@gmail.com', password: '123' },
         { email: 'example@example.com', password: 'password' },
-        { email: 'test@test.com', password: '123456' }
+        { email: 'test@test.com', password: '123456' },
+        { email: 'adhikarib2019@gmail.com', password: 'Ab2019#zy' }
     ];
 
     const user = users.find(user => user.email === emailInput && user.password === passwordInput);
