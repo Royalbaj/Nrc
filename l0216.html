@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunil Suryabanshi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/profile.css">
+<link rel="shortcut icon" href="assets/images/favicon.png" type="image/png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+    
+</head>
+<body>
+    <div class="profile-card" data-name="Sunil Suryabanshi" data-phone="+9779857033290" data-email="sunilsuryabanshi8@gmail.com" data-url="https://cards.robaj.com/l0216">
+        <a href="https://cards.robaj.com/#reservation">
+            <img src="assets/images/logo.png" alt="Logo" class="logo">
+        </a>
+
+        <button class="report-btn" onclick="showReportForm()">
+            <i class="fas fa-flag report-icon"></i> 
+        </button>
+
+        <a href="login.html">
+            <i class="fas fa-cog settings-icon"></i>
+        </a>
+
+        <div class="profile-header">
+            <img src="assets/images/l0216.jpg" alt="Profile Picture" class="profile-img">
+            <h1 class="profile-name">Sunil Suryabanshi</h1>
+            <p class="profile-about">Sunil Suryabanshi is a person of great integrity and kindness. He is known for his strong moral values, always striving to do what’s right and help others whenever possible. His positive attitude and genuine care for people make him someone others look up to and respect. Sunil's dedication to making a difference in the lives of those around him reflects his deep commitment to leading by example.
+
+</p>
+        </div>
+        <div class="profile-contact">
+            <button class="round-btn" onclick="saveContact()">Save Contact</button>
+            <a href="tel:+977-9857033290" class="round-btn">Call</a>
+            <button class="round-btn" onclick="generateQR()">Share Profile</button>
+        </div>
+        <div class="profile-social-media">
+            <a href="https://www.facebook.com/profile.php?id=100043406723485&mibextid=ZbWKwL" class="social-media-link"><img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook"></a>
+            <a href="https://www.linkedin.com" class="social-media-link"><img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg" alt="LinkedIn"></a>
+            <a href="https://www.instagram.com" class="social-media-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram"></a>
+            <a href="https://wa.me/9779857033290" class="social-media-link"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"></a>
+            <a href="https://www.youtube.com" class="social-media-link"><img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="YouTube"></a>
+            <a href="https://cards.robaj.com/l0216" class="social-media-link"><img src="assets/images/website.png" alt="Website"></a>
+        </div>
+        <div class="profile-contact-info" onclick="sendEmail()">
+            <p><i class="fas fa-envelope contact-icon"></i> sunilsuryabanshi8@gmail.com</p>
+        </div>
+        <div class="profile-contact-info" onclick="makeCall()">
+            <p><i class="fas fa-phone contact-icon"></i> Call: +977-9857033290</p>
+             <p><i class="fas fa-phone contact-icon"></i> Call: +977-9847004420</p>
+        </div>
+        <div class="profile-location">
+            <p><i class="fas fa-map-marker-alt contact-icon"></i> Butwal Rupandehi, Nepal</p>
+        </div>
+    </div>
+
+    <div id="qrModal" class="qr-modal">
+        <div class="qr-container">
+            <span class="qr-close" onclick="closeQRModal()">&times;</span>
+            <div id="qrcode"></div>
+            <button class="round-btn" onclick="downloadQR()">Download QR</button>
+        </div>
+    </div>
+
+    <div id="reportModal" class="report-modal" style="display: none;">
+        <div class="report-container">
+            <span class="report-close" onclick="closeReportForm()">&times;</span>
+            <h2>Report Profile</h2>
+            <form id="reportForm" class="report-form" onsubmit="submitReportForm(event)" autocomplete="off">
+                <div>
+                    <label for="name">Your Name:</label>
+                    <input type="text" id="entry.2089213951" name="entry.2089213951" required autocomplete="off">
+                </div>
+                <div>
+                    <label for="robajId">Your Robaj ID:</label>
+                    <input type="text" id="entry.824755958" name="entry.824755958" required autocomplete="off">
+                </div>
+                <div>
+                    <label for="reason">Describe Your Issue:</label>
+                    <textarea id="entry.1229325095" name="entry.1229325095" rows="4" required autocomplete="off"></textarea>
+                </div>
+                <button type="submit" class="round-btn">Submit</button>
+            </form>
+            <div id="successMessage" style="display: none; color: green; margin-top: 10px;">
+                Your issue has been registered and will be sorted out soon.
+            </div>
+        </div>
+    </div>
+<script src="assets/js/profile.js"></script>
+
+    
+</body>
+</html>
