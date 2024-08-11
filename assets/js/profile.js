@@ -1,36 +1,37 @@
-   function saveContact() {
+function saveContact() {
     const profileCard = document.querySelector('.profile-card');
     const name = profileCard.getAttribute('data-name');
     const phone = profileCard.getAttribute('data-phone');
     const email = profileCard.getAttribute('data-email');
     const url = profileCard.getAttribute('data-url');
-    const post = profileCard.getAttribute('data-post');
-    const institution = profileCard.getAttribute('data-institution');
+    const post = profileCard.getAttribute('data-post'); // Updated
+    const institution = profileCard.getAttribute('data-institution'); // Updated
     
     const vCardData = `
 BEGIN:VCARD
 VERSION:3.0
 FN:${name}
-TITLE:${post}
-ORG:${institution}
+TITLE:${post}   
+ORG:${institution}  
 TEL:${phone}
 EMAIL:${email}
 URL:${url}
 PHOTO;TYPE=JPEG;ENCODING=BASE64:${getImageBase64()}
 END:VCARD`;
 
-            const blob = new Blob([vCardData], { type: 'text/vcard' });
-            const blobURL = URL.createObjectURL(blob);
+    const blob = new Blob([vCardData], { type: 'text/vcard' });
+    const blobURL = URL.createObjectURL(blob);
 
-            const a = document.createElement('a');
-            a.href = blobURL;
-            a.setAttribute('download', 'contact.vcf');
+    const a = document.createElement('a');
+    a.href = blobURL;
+    a.setAttribute('download', 'contact.vcf');
 
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(blobURL);
-        }
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(blobURL);
+}
+
 
         function getImageBase64() {
             const canvas = document.createElement('canvas');
