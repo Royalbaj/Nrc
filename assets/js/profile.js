@@ -4,19 +4,29 @@ function saveContact() {
     const phone = profileCard.getAttribute('data-phone');
     const email = profileCard.getAttribute('data-email');
     const url = profileCard.getAttribute('data-url');
-    const post = profileCard.getAttribute('data-post'); // Updated
-    const institution = profileCard.getAttribute('data-institution'); // Updated
+    const post = profileCard.getAttribute('data-post'); 
+    const institution = profileCard.getAttribute('data-institution'); 
     
-    const vCardData = `
+    let vCardData = `
 BEGIN:VCARD
 VERSION:3.0
 FN:${name}
-TITLE:${post}   
-ORG:${institution}  
 TEL:${phone}
 EMAIL:${email}
 URL:${url}
-PHOTO;TYPE=JPEG;ENCODING=BASE64:${getImageBase64()}
+PHOTO;TYPE=JPEG;ENCODING=BASE64:${getImageBase64()}`;
+
+    if (post) {
+        vCardData += `
+TITLE:${post}`;
+    }
+
+    if (institution) {
+        vCardData += `
+ORG:${institution}`;
+    }
+
+    vCardData += `
 END:VCARD`;
 
     const blob = new Blob([vCardData], { type: 'text/vcard' });
