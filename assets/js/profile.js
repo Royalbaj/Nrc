@@ -4,14 +4,9 @@ function saveContact() {
     const phone = profileCard.getAttribute('data-phone');
     const email = profileCard.getAttribute('data-email');
     const url = profileCard.getAttribute('data-url');
-    const post = profileCard.getAttribute('data-post'); 
-    const institution = profileCard.getAttribute('data-institution'); 
+    const post = profileCard.getAttribute('data-post');
+    const institution = profileCard.getAttribute('data-institution');
     
-    // Log to verify the values
-    console.log('Name:', name);
-    console.log('Phone:', phone);
-    console.log('Email:', email);
-    console.log('URL:', url);
     console.log('Post:', post);
     console.log('Institution:', institution);
 
