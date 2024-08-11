@@ -1,14 +1,18 @@
-    function saveContact() {
-            const profileCard = document.querySelector('.profile-card');
-            const name = profileCard.getAttribute('data-name');
-            const phone = profileCard.getAttribute('data-phone');
-            const email = profileCard.getAttribute('data-email');
-            const url = profileCard.getAttribute('data-url');
-            
-            const vCardData = `
+   function saveContact() {
+    const profileCard = document.querySelector('.profile-card');
+    const name = profileCard.getAttribute('data-name');
+    const phone = profileCard.getAttribute('data-phone');
+    const email = profileCard.getAttribute('data-email');
+    const url = profileCard.getAttribute('data-url');
+    const post = profileCard.getAttribute('data-post');
+    const institution = profileCard.getAttribute('data-institution');
+    
+    const vCardData = `
 BEGIN:VCARD
 VERSION:3.0
 FN:${name}
+TITLE:${post}
+ORG:${institution}
 TEL:${phone}
 EMAIL:${email}
 URL:${url}
