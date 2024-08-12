@@ -12,27 +12,31 @@ function saveContact() {
     let vCardData = `
 BEGIN:VCARD
 VERSION:3.0
-FN;CHARSET=UTF-8:${name}
-N;CHARSET=UTF-8:;${name};;;
-TEL;CHARSET=UTF-8:${phone}
-EMAIL;CHARSET=UTF-8:${email}
-URL;CHARSET=UTF-8:${url}`;
+N:${name};;;;
+FN:${name}
+TEL:${phone}
+EMAIL:${email}
+URL:${url}`;
 
     if (post) {
         vCardData += `
-TITLE;CHARSET=UTF-8:${post}`;
+TITLE:${post}`;
     }
 
     if (institution) {
         vCardData += `
-ORG;CHARSET=UTF-8:${institution}`;
+ORG:${institution}`;
+    }
+
+    if (imageBase64) {
+        vCardData += `
+PHOTO;ENCODING=b;TYPE=JPEG:${imageBase64}`;
     }
 
     vCardData += `
-PHOTO;TYPE=JPEG;ENCODING=b:${imageBase64}
 END:VCARD`;
 
-    const blob = new Blob([vCardData], { type: 'text/vcard' });
+    const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8' });
     const blobURL = URL.createObjectURL(blob);
 
     const a = document.createElement('a');
@@ -43,6 +47,18 @@ END:VCARD`;
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(blobURL);
+}
+
+function getImageBase64() {
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    const img = document.querySelector('.profile-img');
+
+    canvas.width = img.width;
+    canvas.height = img.height;
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+    return canvas.toDataURL('image/jpeg').split(',')[1];
 }
 
 
