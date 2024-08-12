@@ -7,29 +7,28 @@ function saveContact() {
     const post = profileCard.getAttribute('data-post');
     const institution = profileCard.getAttribute('data-institution');
     
-    console.log('Post:', post);
-    console.log('Institution:', institution);
+    const imageBase64 = getImageBase64();
 
     let vCardData = `
 BEGIN:VCARD
 VERSION:3.0
-FN:${name}
-TEL:${phone}
-EMAIL:${email}
-URL:${url}
-PHOTO;TYPE=JPEG;ENCODING=BASE64:${getImageBase64()}`;
+FN;CHARSET=UTF-8:${name}
+TEL;CHARSET=UTF-8:${phone}
+EMAIL;CHARSET=UTF-8:${email}
+URL;CHARSET=UTF-8:${url}`;
 
     if (post) {
         vCardData += `
-TITLE:${post}`;
+TITLE;CHARSET=UTF-8:${post}`;
     }
 
     if (institution) {
         vCardData += `
-ORG:${institution}`;
+ORG;CHARSET=UTF-8:${institution}`;
     }
 
     vCardData += `
+PHOTO;TYPE=JPEG;ENCODING=b:${imageBase64}
 END:VCARD`;
 
     const blob = new Blob([vCardData], { type: 'text/vcard' });
@@ -45,18 +44,18 @@ END:VCARD`;
     URL.revokeObjectURL(blobURL);
 }
 
+function getImageBase64() {
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    const img = document.querySelector('.profile-img');
 
-        function getImageBase64() {
-            const canvas = document.createElement('canvas');
-            const ctx = canvas.getContext('2d');
-            const img = document.querySelector('.profile-img');
+    canvas.width = img.width;
+    canvas.height = img.height;
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
-            canvas.width = img.width;
-            canvas.height = img.height;
-            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+    return canvas.toDataURL('image/jpeg').split(',')[1];
+}
 
-            return canvas.toDataURL('image/jpeg').split(',')[1];
-        }
 
         function sendEmail() {
             const email = document.querySelector('.profile-card').getAttribute('data-email');
