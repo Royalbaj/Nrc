@@ -6,26 +6,30 @@ function saveContact() {
     const url = profileCard.getAttribute('data-url');
     const post = profileCard.getAttribute('data-post');
     const institution = profileCard.getAttribute('data-institution');
+
+    const nameParts = name.split(' ');
+    const lastName = nameParts.length > 1 ? nameParts.slice(-1)[0] : '';
+    const firstName = nameParts.length > 1 ? nameParts.slice(0, -1).join(' ') : nameParts[0];
     
     const imageBase64 = getImageBase64();
 
     let vCardData = `
 BEGIN:VCARD
 VERSION:3.0
-N:${name};;;;
-FN:${name}
-TEL:${phone}
-EMAIL:${email}
-URL:${url}`;
+N;CHARSET=UTF-8:${lastName};${firstName};;;
+FN;CHARSET=UTF-8:${name}
+TEL;CHARSET=UTF-8:${phone}
+EMAIL;CHARSET=UTF-8:${email}
+URL;CHARSET=UTF-8:${url}`;
 
     if (post) {
         vCardData += `
-TITLE:${post}`;
+TITLE;CHARSET=UTF-8:${post}`;
     }
 
     if (institution) {
         vCardData += `
-ORG:${institution}`;
+ORG;CHARSET=UTF-8:${institution}`;
     }
 
     if (imageBase64) {
@@ -60,6 +64,7 @@ function getImageBase64() {
 
     return canvas.toDataURL('image/jpeg').split(',')[1];
 }
+
 
 
         function sendEmail() {
