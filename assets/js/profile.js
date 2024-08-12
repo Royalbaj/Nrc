@@ -1,35 +1,33 @@
 function saveContact() {
-    const profileCard = document.querySelector('.profile-card');
-    const name = profileCard.getAttribute('data-name');
-    const phone = profileCard.getAttribute('data-phone');
-    const email = profileCard.getAttribute('data-email');
-    const url = profileCard.getAttribute('data-url');
-    const post = profileCard.getAttribute('data-post');
-    const institution = profileCard.getAttribute('data-institution');
+    const profileHeader = document.querySelector('.profile-header');
+    const profileName = profileHeader.querySelector('.profile-name').textContent.trim();
+    const profilePost = profileHeader.querySelector('.profile-post').textContent.trim();
+    const profileInstitution = profileHeader.querySelector('.profile-institution').textContent.trim();
 
-    const nameParts = name.split(' ');
-    const lastName = nameParts.length > 1 ? nameParts.slice(-1)[0] : '';
-    const firstName = nameParts.length > 1 ? nameParts.slice(0, -1).join(' ') : nameParts[0];
+    const profileContact = document.querySelector('.profile-contact');
+    const profilePhone = profileContact.querySelector('a[href^="tel:"]').getAttribute('href').replace('tel:', '');
+    const profileEmail = document.querySelector('.profile-contact-info i.fas.fa-envelope').nextSibling.textContent.trim();
+    const profileURL = document.querySelector('.profile-social-media a[href^="https://www.govindabahadurkhatri.com.np"]').getAttribute('href');
     
     const imageBase64 = getImageBase64();
 
     let vCardData = `
 BEGIN:VCARD
 VERSION:3.0
-N;CHARSET=UTF-8:${lastName};${firstName};;;
-FN;CHARSET=UTF-8:${name}
-TEL;CHARSET=UTF-8:${phone}
-EMAIL;CHARSET=UTF-8:${email}
-URL;CHARSET=UTF-8:${url}`;
+N:${profileName.split(' ').slice(-1)[0]};${profileName.split(' ').slice(0, -1).join(' ')};;;
+FN:${profileName}
+TEL:${profilePhone}
+EMAIL:${profileEmail}
+URL:${profileURL}`;
 
-    if (post) {
+    if (profilePost) {
         vCardData += `
-TITLE;CHARSET=UTF-8:${post}`;
+TITLE:${profilePost}`;
     }
 
-    if (institution) {
+    if (profileInstitution) {
         vCardData += `
-ORG;CHARSET=UTF-8:${institution}`;
+ORG:${profileInstitution}`;
     }
 
     if (imageBase64) {
@@ -52,6 +50,7 @@ END:VCARD`;
     document.body.removeChild(a);
     URL.revokeObjectURL(blobURL);
 }
+
 
 function getImageBase64() {
     const canvas = document.createElement('canvas');
