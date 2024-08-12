@@ -13,6 +13,7 @@ function saveContact() {
 BEGIN:VCARD
 VERSION:3.0
 FN;CHARSET=UTF-8:${name}
+N;CHARSET=UTF-8:;${name};;;
 TEL;CHARSET=UTF-8:${phone}
 EMAIL;CHARSET=UTF-8:${email}
 URL;CHARSET=UTF-8:${url}`;
@@ -42,18 +43,6 @@ END:VCARD`;
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(blobURL);
-}
-
-function getImageBase64() {
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
-    const img = document.querySelector('.profile-img');
-
-    canvas.width = img.width;
-    canvas.height = img.height;
-    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-
-    return canvas.toDataURL('image/jpeg').split(',')[1];
 }
 
 
