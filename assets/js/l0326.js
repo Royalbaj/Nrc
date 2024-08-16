@@ -4,21 +4,29 @@ function saveContact() {
         const vCardData = `
 BEGIN:VCARD
 VERSION:3.0
-N:;Bhandari;Krishna;;;
-FN:Krishna Bhandari
-TEL:+977-9857053661
-EMAIL:krishnabhandari.info@gmail.com
-URL:https://www.linkedin.com/in/krishna-bhandari-ab1b60158?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app
-TITLE:Managing Director at Silicon Education Butwal
-ORG:Proactive Path Education Network
+N;CHARSET=UTF-8:Bhandari;Krishna;;;
+FN;CHARSET=UTF-8:Krishna Bhandari
+TEL;CHARSET=UTF-8:+977-9857053661
+EMAIL;CHARSET=UTF-8:krishnabhandari.info@gmail.com
+URL;CHARSET=UTF-8:https://www.linkedin.com/in/krishna-bhandari-ab1b60158?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app
+TITLE;CHARSET=UTF-8:Managing Director at Silicon Education Butwal
+ORG;CHARSET=UTF-8:Proactive Path Education Network
 END:VCARD
         `.trim();
 
         // Create a Blob with the vCard data
-        const blob = new Blob([vCardData], { type: 'text/vcard' });
+        const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8' });
+        const blobURL = URL.createObjectURL(blob);
 
-        // Use FileSaver.js to save the Blob
-        saveAs(blob, 'KrishnaBhandari.vcf');
+        // Create a download link and trigger the download
+        const a = document.createElement('a');
+        a.href = blobURL;
+        a.setAttribute('download', 'KrishnaBhandari.vcf');
+
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(blobURL);
     } catch (error) {
         console.error('Error creating vCard:', error);
     }
