@@ -30,10 +30,21 @@
             <p class="profile-title">Managing Director at Silicon Education Butwal</p>
             <p class="profile-title">Founder and Director at Proactive Path Education Network</p>
             <div class="profile-contact">
-                <button class="round-btn" onclick="saveContact()">Save Contact</button>
-                <a href="tel:+9779857053661" class="round-btn">Call</a>
-                <button class="round-btn" onclick="generateQR()">Share Profile</button>
-            </div>
+    <button class="round-btn" onclick="saveContact()">Save Contact</button>
+    <a href="tel:+9779857053661" class="round-btn">Call</a>
+    <button class="round-btn" onclick="generateQR()">Share Profile</button>
+</div>
+
+<!-- QR Code Overlay -->
+<div id="qr-overlay">
+    <div class="qr-container">
+        <img id="qr-code" alt="QR Code">
+        <button class="round-btn" id="download-qr" onclick="downloadQRCode()">Download QR Code</button>
+        <span class="close" onclick="closeQR()">×</span>
+    </div>
+</div>
+
+
 
             <!-- Social Media Links -->
             <div class="social-media">
