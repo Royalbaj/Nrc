@@ -1,7 +1,7 @@
 function saveContact() {
     try {
-        // Function to get the base64-encoded image from an image element
-        function getImageBase64(imageElement, callback) {
+        // Function to get the base64-encoded image from a URL
+        function getImageBase64(imageUrl, callback) {
             const canvas = document.createElement('canvas');
             const ctx = canvas.getContext('2d');
             const img = new Image();
@@ -12,13 +12,13 @@ function saveContact() {
                 ctx.drawImage(img, 0, 0);
                 callback(canvas.toDataURL('image/png').split(',')[1]);
             };
-            img.src = imageElement.src;
+            img.src = imageUrl;
         }
 
-        // Get the image element from the DOM
-        const imageElement = document.querySelector('.profile-img');
+        // URL to the image
+        const imageUrl = 'assets/images/l0326.png';
         
-        getImageBase64(imageElement, function(imageBase64) {
+        getImageBase64(imageUrl, function(imageBase64) {
             // Static vCard data with image included
             const vCardData = `
 BEGIN:VCARD
