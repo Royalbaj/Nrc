@@ -33,7 +33,7 @@ N;CHARSET=UTF-8:Bhandari;Krishna;;;
 FN;CHARSET=UTF-8:Krishna Bhandari
 TEL;CHARSET=UTF-8:+977-9857053661
 EMAIL;CHARSET=UTF-8:krishnabhandari.info@gmail.com
-URL;CHARSET=UTF-8:https://www.linkedin.com/in/krishna-bhandari-ab1b60158?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app
+URL;CHARSET=UTF-8:https://cards.robaj.com/l0326
 TITLE;CHARSET=UTF-8:Managing Director at Silicon Education Butwal
 ORG;CHARSET=UTF-8:Proactive Path Education Network
 PHOTO;ENCODING=b;TYPE=PNG:${imageBase64}

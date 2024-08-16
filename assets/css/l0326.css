@@ -316,7 +316,20 @@
     margin-bottom: 10px; 
     text-align: center; 
 }
+.contact-info {
+    margin-top: 20px;
+}
+
+.contact-details p {
+    margin: 10px 0;
+    line-height: 1.5;
+}
+
 .contact-link {
-  color: inherit; /* Keeps the color the same as surrounding text */
-  text-decoration: none; /* Removes underline */
+    color: #e0e0e0;
+    text-decoration: none;
+}
+
+.contact-link:hover {
+    text-decoration: underline;
 }
