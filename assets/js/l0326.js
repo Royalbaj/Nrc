@@ -12,24 +12,13 @@ URL:https://www.linkedin.com/in/krishna-bhandari-ab1b60158?utm_source=share&utm_
 TITLE:Managing Director at Silicon Education Butwal
 ORG:Proactive Path Education Network
 END:VCARD
-        `.trim(); // Remove extra newlines and spaces
+        `.trim();
 
         // Create a Blob with the vCard data
         const blob = new Blob([vCardData], { type: 'text/vcard' });
 
-        // Create a URL for the Blob
-        const url = URL.createObjectURL(blob);
-
-        // Create an anchor element and trigger a download
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'KrishnaBhandari.vcf'; // Set the desired filename
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-
-        // Clean up the Blob URL
-        URL.revokeObjectURL(url);
+        // Use FileSaver.js to save the Blob
+        saveAs(blob, 'KrishnaBhandari.vcf');
     } catch (error) {
         console.error('Error creating vCard:', error);
     }
