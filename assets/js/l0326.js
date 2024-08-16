@@ -1,7 +1,26 @@
 function saveContact() {
     try {
-        // Static vCard data
-        const vCardData = `
+        // Function to get the base64-encoded image from an image element
+        function getImageBase64(imageElement, callback) {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            const img = new Image();
+            img.crossOrigin = 'Anonymous'; // Handle CORS for external images
+            img.onload = function () {
+                canvas.width = img.width;
+                canvas.height = img.height;
+                ctx.drawImage(img, 0, 0);
+                callback(canvas.toDataURL('image/png').split(',')[1]);
+            };
+            img.src = imageElement.src;
+        }
+
+        // Get the image element from the DOM
+        const imageElement = document.querySelector('.profile-img');
+        
+        getImageBase64(imageElement, function(imageBase64) {
+            // Static vCard data with image included
+            const vCardData = `
 BEGIN:VCARD
 VERSION:3.0
 N;CHARSET=UTF-8:Bhandari;Krishna;;;
@@ -11,26 +30,29 @@ EMAIL;CHARSET=UTF-8:krishnabhandari.info@gmail.com
 URL;CHARSET=UTF-8:https://www.linkedin.com/in/krishna-bhandari-ab1b60158?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app
 TITLE;CHARSET=UTF-8:Managing Director at Silicon Education Butwal
 ORG;CHARSET=UTF-8:Proactive Path Education Network
+PHOTO;ENCODING=b;TYPE=PNG:${imageBase64}
 END:VCARD
-        `.trim();
+            `.trim();
 
-        // Create a Blob with the vCard data
-        const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8' });
-        const blobURL = URL.createObjectURL(blob);
+            // Create a Blob with the vCard data
+            const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8' });
+            const blobURL = URL.createObjectURL(blob);
 
-        // Create a download link and trigger the download
-        const a = document.createElement('a');
-        a.href = blobURL;
-        a.setAttribute('download', 'KrishnaBhandari.vcf');
+            // Create a download link and trigger the download
+            const a = document.createElement('a');
+            a.href = blobURL;
+            a.setAttribute('download', 'KrishnaBhandari.vcf');
 
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(blobURL);
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(blobURL);
+        });
     } catch (error) {
         console.error('Error creating vCard:', error);
     }
 }
+
 
 function generateQR() {
     const currentURL = window.location.href;
