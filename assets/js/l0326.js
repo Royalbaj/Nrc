@@ -1,18 +1,14 @@
 function saveContact() {
     try {
-        const vCardData = `
-BEGIN:VCARD
-VERSION:3.0
-N:;Bhandari;Krishna;;;
-FN:Krishna Bhandari
-TEL:+977-9857053661
-EMAIL:krishnabhandari.info@gmail.com
-URL:https://www.linkedin.com/in/krishna-bhandari-ab1b60158?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app
-TITLE:Managing Director at Silicon Education Butwal
-ORG:Proactive Path Education Network
-END:VCARD
-        `;
+        const vCard = new VCard();
+        vCard.addName("Krishna", "Bhandari");
+        vCard.addPhoneNumber("+977-9857053661");
+        vCard.addEmail("krishnabhandari.info@gmail.com");
+        vCard.addURL("https://www.linkedin.com/in/krishna-bhandari-ab1b60158?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app");
+        vCard.addTitle("Managing Director at Silicon Education Butwal");
+        vCard.addOrganization("Proactive Path Education Network");
 
+        const vCardData = vCard.toString();
         const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8' });
         const url = URL.createObjectURL(blob);
 
