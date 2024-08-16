@@ -1,3 +1,5 @@
+// scripts.js
+
 function saveContact() {
     try {
         const vCardData = `
@@ -13,11 +15,11 @@ function saveContact() {
             END:VCARD
         `;
 
-        const blob = new Blob([vCardData], { type: 'text/vcard' });
+        const blob = new Blob([vCardData], { type: 'text/x-vcard' });
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'KrishnaBhandari.vcf';
+        a.download = 'KrishnaBhandari.vcf'; // Ensure the correct filename
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
@@ -26,60 +28,48 @@ function saveContact() {
         console.error('Error creating vCard:', error);
     }
 }
-function testBlobDownload() {
-    const text = 'This is a test file.';
-    const blob = new Blob([text], { type: 'text/plain' });
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'test.txt';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    window.URL.revokeObjectURL(url);
+
+function generateQR() {
+    const currentURL = window.location.href;
+    const qrCodeURL = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(currentURL)}`;
+    document.getElementById('qr-code').src = qrCodeURL;
+    document.getElementById('qr-overlay').style.display = 'flex';
 }
 
-        function generateQR() {
-            const currentURL = window.location.href;
-            const qrCodeURL = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(currentURL)}`;
-            document.getElementById('qr-code').src = qrCodeURL;
-            document.getElementById('qr-overlay').style.display = 'flex';
+function closeQR() {
+    document.getElementById('qr-overlay').style.display = 'none';
+}
+
+function openReportModal() {
+    document.getElementById('report-modal').style.display = 'flex';
+}
+
+function closeReportModal() {
+    document.getElementById('report-modal').style.display = 'none';
+}
+
+function submitReport(event) {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+
+    fetch('https://docs.google.com/forms/d/e/1FAIpQLScYnQKM8mFPOFSy6U8XmE6hAEWKxFY9NxCZb7eaASB_MgqNuA/formResponse', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => {
+        if (response.ok) {
+            document.getElementById('report-form').reset();
+            document.getElementById('report-message').textContent = 'Thank you for your report! We will get back to you shortly.';
+            document.getElementById('report-message').style.display = 'block';
+            setTimeout(() => closeReportModal(), 3000); // Close the modal after 3 seconds
+        } else {
+            document.getElementById('report-message').textContent = 'There was an issue with your report.';
+            document.getElementById('report-message').style.display = 'block';
         }
-
-        function closeQR() {
-            document.getElementById('qr-overlay').style.display = 'none';
-        }
-
-        function openReportModal() {
-            document.getElementById('report-modal').style.display = 'flex';
-        }
-
-        function closeReportModal() {
-            document.getElementById('report-modal').style.display = 'none';
-        }
-
-        function submitReport(event) {
-            event.preventDefault();
-
-            const formData = new FormData(event.target);
-
-            fetch('https://docs.google.com/forms/d/e/1FAIpQLScYnQKM8mFPOFSy6U8XmE6hAEWKxFY9NxCZb7eaASB_MgqNuA/formResponse', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => {
-                if (response.ok) {
-                    document.getElementById('report-form').reset();
-                    document.getElementById('report-message').textContent = 'Thank you for your report! We will get back to you shortly.';
-                    document.getElementById('report-message').style.display = 'block';
-                    setTimeout(() => closeReportModal(), 3000); // Close the modal after 3 seconds
-                } else {
-                    document.getElementById('report-message').textContent = 'Thank you for your report! We will get back to you shortly.';
-                    document.getElementById('report-message').style.display = 'block';
-                }
-            })
-            .catch(error => {
-                document.getElementById('report-message').textContent = 'Thank you for your report! We will get back to you shortly.';
-                document.getElementById('report-message').style.display = 'block';
-            });
-        }
+    })
+    .catch(error => {
+        document.getElementById('report-message').textContent = 'There was an issue with your report.';
+        document.getElementById('report-message').style.display = 'block';
+    });
+}
