@@ -106,13 +106,13 @@ function openReportModal() {
                 setTimeout(() => closeReportModal(), 3000); 
             } else {
                 document.getElementById('report-message').textContent = 'Thank you for your report! We will get back to you shortly';
-                document.getElementById('report-message').style.color = 'red'; 
+                document.getElementById('report-message').style.color = 'green'; 
                 document.getElementById('report-message').style.display = 'block'; 
             }
         })
         .catch(error => {
             document.getElementById('report-message').textContent = 'Thank you for your report! We will get back to you shortly';
-            document.getElementById('report-message').style.color = 'red'; 
+            document.getElementById('report-message').style.color = 'green'; 
             document.getElementById('report-message').style.display = 'block'; 
         });
     };
