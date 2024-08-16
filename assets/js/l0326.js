@@ -76,3 +76,43 @@ function downloadQRCode() {
 function closeQR() {
     document.getElementById('qr-overlay').style.display = 'none';
 }
+function openReportModal() {
+        document.getElementById('report-modal').style.display = 'flex';
+    }
+
+    function closeReportModal() {
+        document.getElementById('report-modal').style.display = 'none';
+        document.getElementById('report-message').textContent = ''; // Clear the message
+        document.getElementById('report-message').style.display = 'none'; // Hide the message
+    }
+
+    document.getElementById('report-form').onsubmit = function (event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        const form = event.target;
+        const formData = new FormData(form);
+        const url = 'https://docs.google.com/forms/d/e/1FAIpQLScYnQKM8mFPOFSy6U8XmE6hAEWKxFY9NxCZb7eaASB_MgqNuA/formResponse';
+
+        fetch(url, {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (response.ok) {
+                document.getElementById('report-form').reset();
+                document.getElementById('report-message').textContent = 'Thank you for your report! We will get back to you shortly.';
+                document.getElementById('report-message').style.color = 'green'; 
+                document.getElementById('report-message').style.display = 'block'; 
+                setTimeout(() => closeReportModal(), 3000); 
+            } else {
+                document.getElementById('report-message').textContent = 'Thank you for your report! We will get back to you shortly';
+                document.getElementById('report-message').style.color = 'red'; 
+                document.getElementById('report-message').style.display = 'block'; 
+            }
+        })
+        .catch(error => {
+            document.getElementById('report-message').textContent = 'Thank you for your report! We will get back to you shortly';
+            document.getElementById('report-message').style.color = 'red'; 
+            document.getElementById('report-message').style.display = 'block'; 
+        });
+    };
