@@ -1,28 +1,43 @@
 function saveContact() {
-            const vCardData = `
-               BEGIN:VCARD
-VERSION:3.0
-N;CHARSET=UTF-8:Bhandari;Krishna;;;
-FN;CHARSET=UTF-8:Krishna Bhandari
-TEL;CHARSET=UTF-8:+977-9857053661
-EMAIL;CHARSET=UTF-8:krishnabhandari.info@gmail.com
-URL;CHARSET=UTF-8:https://www.linkedin.com/in/krishna-bhandari-ab1b60158?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app
-TITLE;CHARSET=UTF-8:Managing Director at Silicon Education Butwal
-ORG;CHARSET=UTF-8:Proactive Path Education Network
-PHOTO;ENCODING=b;TYPE=JPEG:${imageBase64}
-END:VCARD`;
-            
+    try {
+        const vCardData = `
+            BEGIN:VCARD
+            VERSION:3.0
+            N:;Krishna;Bhandari;;
+            FN:Krishna Bhandari
+            TEL:+977-9857053661
+            EMAIL:krishnabhandari.info@gmail.com
+            URL:https://www.linkedin.com/in/krishna-bhandari-ab1b60158?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app
+            TITLE:Managing Director at Silicon Education Butwal
+            ORG:Proactive Path Education Network
+            END:VCARD
+        `;
 
-            const blob = new Blob([vCardData], { type: 'text/vcard' });
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'KrishnaBhandari.vcf';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            window.URL.revokeObjectURL(url);
-        }
+        const blob = new Blob([vCardData], { type: 'text/vcard' });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'KrishnaBhandari.vcf';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+    } catch (error) {
+        console.error('Error creating vCard:', error);
+    }
+}
+function testBlobDownload() {
+    const text = 'This is a test file.';
+    const blob = new Blob([text], { type: 'text/plain' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'test.txt';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    window.URL.revokeObjectURL(url);
+}
 
         function generateQR() {
             const currentURL = window.location.href;
