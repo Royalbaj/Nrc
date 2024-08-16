@@ -1,10 +1,9 @@
 function saveContact() {
     try {
-        
         const vCardData = `
 BEGIN:VCARD
 VERSION:3.0
-N:;Krishna;Bhandari;;;
+N:;Bhandari;Krishna;;;
 FN:Krishna Bhandari
 TEL:+977-9857053661
 EMAIL:krishnabhandari.info@gmail.com
@@ -14,21 +13,15 @@ ORG:Proactive Path Education Network
 END:VCARD
         `;
 
-        // Create a Blob with the vCard data
         const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8' });
-        
-        // Create a URL for the Blob
         const url = URL.createObjectURL(blob);
 
-        // Create an anchor element and trigger a download
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'KrishnaBhandari.vcf'; 
+        a.download = 'KrishnaBhandari.vcf';
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
-
-        // Clean up the Blob URL
         URL.revokeObjectURL(url);
     } catch (error) {
         console.error('Error creating vCard:', error);
