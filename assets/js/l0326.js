@@ -1,30 +1,39 @@
 function saveContact() {
     try {
-        const vCard = new VCard();
-        vCard.addName("Krishna", "Bhandari");
-        vCard.addPhoneNumber("+977-9857053661");
-        vCard.addEmail("krishnabhandari.info@gmail.com");
-        vCard.addURL("https://www.linkedin.com/in/krishna-bhandari-ab1b60158?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app");
-        vCard.addTitle("Managing Director at Silicon Education Butwal");
-        vCard.addOrganization("Proactive Path Education Network");
+        // Static vCard data
+        const vCardData = `
+BEGIN:VCARD
+VERSION:3.0
+N:;Bhandari;Krishna;;;
+FN:Krishna Bhandari
+TEL:+977-9857053661
+EMAIL:krishnabhandari.info@gmail.com
+URL:https://www.linkedin.com/in/krishna-bhandari-ab1b60158?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app
+TITLE:Managing Director at Silicon Education Butwal
+ORG:Proactive Path Education Network
+END:VCARD
+        `;
 
-        const vCardData = vCard.toString();
+        // Create a Blob with the vCard data
         const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8' });
+
+        // Create a URL for the Blob
         const url = URL.createObjectURL(blob);
 
+        // Create an anchor element and trigger a download
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'KrishnaBhandari.vcf';
+        a.download = 'KrishnaBhandari.vcf'; // Set the desired filename
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
+
+        // Clean up the Blob URL
         URL.revokeObjectURL(url);
     } catch (error) {
         console.error('Error creating vCard:', error);
     }
 }
-
-
 function generateQR() {
     const currentURL = window.location.href;
     const qrCodeURL = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(currentURL)}`;
