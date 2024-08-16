@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krishna Bhandari</title>
+    <link rel="stylesheet" href="assets/css/l00012.css">
+    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <div class="profile-card">
+        <img src="assets/images/logo.png" alt="Logo" class="logo">
+
+        <div class="icons">
+            <i class="fas fa-flag" title="Report" onclick="openReportModal()"></i>
+            <a href="login.html">
+                <i class="fas fa-cog" title="Settings"></i>
+            </a>
+        </div>
+
+        <div class="profile-header">
+            <img src="assets/images/l0326.png" alt="Krishna Bhandari" class="profile-img">
+            <h1 class="profile-name">Krishna Bhandari</h1>
+            <p class="profile-title">Managing Director at Silicon Education Butwal</p>
+            <p class="profile-title">Founder and Director at Proactive Path Education Network</p>
+            <div class="profile-contact">
+                <button class="round-btn" onclick="saveContact()">Save Contact</button>
+                <a href="tel:+9779857053661" class="round-btn">Call</a>
+                <button class="round-btn" onclick="generateQR()">Share Profile</button>
+            </div>
+
+            <!-- Social Media Links -->
+            <div class="social-media">
+                <a href="https://www.facebook.com/siliconeducationbutwal?mibextid=LQQJ4d" class="social-media-link">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
+                </a>
+                <a href="https://www.linkedin.com/in/krishna-bhandari-ab1b60158?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" class="social-media-link">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg" alt="LinkedIn">
+                </a>
+                <a href="https://wa.me/9779762451661" class="social-media-link">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+                </a>
+                <a href="https://siliconedu.com" class="social-media-link">
+                    <img src="assets/images/website.png" alt="Website">
+                </a>
+                <a href="https://www.facebook.com/siliconeducation?mibextid=LQQJ4d" class="social-media-link">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
+                </a>
+            </div>
+
+            <p class="profile-location"><i class="fas fa-map-marker-alt"></i> Butwal-08, Rajmarga Chauraha, Rupandehi, Nepal</p>
+            <i class="fas fa-envelope"></i> 
+            <a href="mailto:krishnabhandari.info@gmail.com" class="contact-link">krishnabhandari.info@gmail.com</a> | 
+            <i class="fas fa-phone"></i> 
+            <a href="tel:+9779857053661" class="contact-link">+977-9857053661</a>
+        </div>
+
+        <div class="profile-section">
+            <h2>About Me</h2>
+            <p>I am Krishna Bhandari, a dedicated Education Consultant with a passion for helping students achieve their academic and career goals. With a background in both education and marketing, I focus on empowering students through comprehensive support and innovative marketing techniques. I'm always eager to take on new challenges and grow both personally and professionally.</p>
+        </div>
+
+        <div class="profile-section">
+            <h2>Current Positions</h2>
+            <ul>
+                <li>Managing Director | Silicon Education Butwal</li>
+                <li>Founder and Managing Director | Proactive Path Education Network</li>
+            </ul>
+        </div>
+
+        <div class="profile-section">
+            <h2>Work Experience</h2>
+            <ul>
+                <li><strong>Counsellor | Documentation Officer</strong> Silicon Education Network, Dillibazar Height, Kathmandu (2021 – 2023)
+                    <ul>
+                        <li>Provided personalized counseling services to students, aiding them in making informed decisions regarding their academic and career pathways.</li>
+                        <li>Oversaw documentation processes, ensuring accuracy and compliance with institutional and governmental requirements.</li>
+                    </ul>
+                </li>
+                <li><strong>International Marketing Manager</strong> Ocean International Academy, Kumaripati, Lalitpur (2019 – 2021)
+                    <ul>
+                        <li>Developed and implemented strategic marketing initiatives to increase student enrollment in the western regions.</li>
+                    </ul>
+                </li>
+                <li><strong>Marketing Assistant</strong> Ocean International Academy, Kumaripati, Lalitpur (2017 – 2019)
+                    <ul>
+                        <li>Managed international student recruitment and counseling, enhancing student retention and satisfaction.</li>
+                        <li>Streamlined operations, increasing efficiency and service delivery.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- QR Code Overlay -->
+    <div id="qr-overlay">
+        <button class="close-btn" onclick="closeQR()">&times;</button>
+        <img id="qr-code" src="" alt="QR Code">
+    </div>
+
+    <div id="report-modal">
+        <div id="report-modal-content">
+            <div id="report-message"></div>
+            <button class="close-btn" onclick="closeReportModal()">&times;</button>
+            <h2>Report an Issue</h2>
+            <form id="report-form" onsubmit="submitReport(event)">
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="entry.2089213951" required>
+
+                <label for="robaj-id">Your Robaj ID:</label>
+                <input type="text" id="robaj-id" name="entry.824755958" required>
+
+                <label for="issue">Describe Your Issue:</label>
+                <textarea id="issue" name="entry.1229325095" rows="4" required></textarea>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="assets/js/l00012.js"></script>
+</body>
+
+</html>
