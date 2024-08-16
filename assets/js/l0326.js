@@ -2,38 +2,31 @@ function saveContact() {
     try {
         // Function to get the base64-encoded image from a URL
         function getImageBase64(imageUrl, callback) {
-            const canvas = document.createElement('canvas');
-            const ctx = canvas.getContext('2d');
-            const img = new Image();
-            img.crossOrigin = 'Anonymous'; // Handle CORS for external images
+            fetch(imageUrl)
+                .then(response => response.arrayBuffer())
+                .then(arrayBuffer => {
+                    const base64 = arrayBufferToBase64(arrayBuffer);
+                    callback(base64);
+                })
+                .catch(error => {
+                    console.error('Error fetching image:', error);
+                    callback(null);
+                });
+        }
 
-            img.onload = function () {
-                canvas.width = img.width;
-                canvas.height = img.height;
-                ctx.drawImage(img, 0, 0);
-                const base64 = canvas.toDataURL('image/png').split(',')[1];
-                console.log('Image Base64:', base64); // Debugging step
-                callback(base64);
-            };
-
-            img.onerror = function () {
-                console.error('Error loading image:', imageUrl); // Debugging step
-            };
-
-            img.src = imageUrl;
+        // Convert ArrayBuffer to Base64
+        function arrayBufferToBase64(buffer) {
+            const binary = new Uint8Array(buffer).reduce((data, byte) => data + String.fromCharCode(byte), '');
+            return window.btoa(binary);
         }
 
         // URL to the image
-        const imageUrl = 'assets/images/l0326.png';
+        const imageUrl = 'https://cards.robaj.com/assets/images/l0326.png';
         
         getImageBase64(imageUrl, function(imageBase64) {
-            if (!imageBase64) {
-                console.error('Base64 image data is empty'); // Debugging step
-                return;
-            }
-
-            // Static vCard data with image included
-            const vCardData = `
+            if (imageBase64) {
+                // Static vCard data with image included
+                const vCardData = `
 BEGIN:VCARD
 VERSION:3.0
 N;CHARSET=UTF-8:Bhandari;Krishna;;;
@@ -45,21 +38,24 @@ TITLE;CHARSET=UTF-8:Managing Director at Silicon Education Butwal
 ORG;CHARSET=UTF-8:Proactive Path Education Network
 PHOTO;ENCODING=b;TYPE=PNG:${imageBase64}
 END:VCARD
-            `.trim();
+                `.trim();
 
-            // Create a Blob with the vCard data
-            const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8' });
-            const blobURL = URL.createObjectURL(blob);
+                // Create a Blob with the vCard data
+                const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8' });
+                const blobURL = URL.createObjectURL(blob);
 
-            // Create a download link and trigger the download
-            const a = document.createElement('a');
-            a.href = blobURL;
-            a.setAttribute('download', 'KrishnaBhandari.vcf');
+                // Create a download link and trigger the download
+                const a = document.createElement('a');
+                a.href = blobURL;
+                a.setAttribute('download', 'KrishnaBhandari.vcf');
 
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(blobURL);
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(blobURL);
+            } else {
+                console.error('Failed to encode image as base64.');
+            }
         });
     } catch (error) {
         console.error('Error creating vCard:', error);
