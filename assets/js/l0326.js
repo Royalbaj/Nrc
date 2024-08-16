@@ -6,12 +6,20 @@ function saveContact() {
             const ctx = canvas.getContext('2d');
             const img = new Image();
             img.crossOrigin = 'Anonymous'; // Handle CORS for external images
+
             img.onload = function () {
                 canvas.width = img.width;
                 canvas.height = img.height;
                 ctx.drawImage(img, 0, 0);
-                callback(canvas.toDataURL('image/png').split(',')[1]);
+                const base64 = canvas.toDataURL('image/png').split(',')[1];
+                console.log('Image Base64:', base64); // Debugging step
+                callback(base64);
             };
+
+            img.onerror = function () {
+                console.error('Error loading image:', imageUrl); // Debugging step
+            };
+
             img.src = imageUrl;
         }
 
@@ -19,6 +27,11 @@ function saveContact() {
         const imageUrl = 'assets/images/l0326.png';
         
         getImageBase64(imageUrl, function(imageBase64) {
+            if (!imageBase64) {
+                console.error('Base64 image data is empty'); // Debugging step
+                return;
+            }
+
             // Static vCard data with image included
             const vCardData = `
 BEGIN:VCARD
@@ -52,6 +65,7 @@ END:VCARD
         console.error('Error creating vCard:', error);
     }
 }
+
 
 
 function generateQR() {
