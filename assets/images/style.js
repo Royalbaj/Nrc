@@ -11,7 +11,9 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
         { email: 'govindakc.np@gmail.com', password: '123' },
         { email: 'sunilsuryabanshi8@gmail.com', password: '@sunil##' },
         { email: 'tilakrampaudel@gmail.com', password: '@harekrishna' },
-        { email: 'adhikarib2019@gmail.com', password: 'Ab2019#zy' }
+        { email: 'adhikarib2019@gmail.com', password: 'Ab2019#zy' },
+        { email: 'krishnabhandari.info@gmail.com', password: 'Bhandarikrishna661#' }
+
     ];
 
     const user = users.find(user => user.email === emailInput && user.password === passwordInput);
