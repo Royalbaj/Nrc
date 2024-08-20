@@ -1,11 +1,38 @@
 /* General Body Styling */
-body, .pandabody {
+
+/* Default body styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #1c1c1e, #2e2e2e);
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Panda section styling */
+.panda {
+    background-color: #444; /* Adjust as needed */
+    color: #fff;
+    padding: 20px;
+    margin: 10px 0; /* Adds spacing between sections */
+    /* Ensure the panda section takes full width */
+    width: 100%;
+    display: block;
+}
+
+/* Panda body section styling */
+.pandabody {
     font-family: Arial, sans-serif;
     background-color: #333;
     color: #fff; /* Ensure text color is readable on dark background */
-    margin: 0;
-    padding: 0;
+    padding: 20px;
+    margin: 10px 0; /* Adds spacing between sections */
+    /* Ensure the pandabody section takes full width */
+    width: 100%;
+    display: block;
 }
+
 
 /* Rooms Section */
 .panda-rooms-section {
@@ -888,36 +915,4 @@ body, .pandabody {
     background-color: #357ab7;
 }
 
-/* Mobile Styles */
-@media (max-width: 768px) {
-    .profile-card {
-        max-width: 100%;
-        margin: 0;
-        height: 100vh;
-        overflow: hidden;
-        position: relative;
-    }
 
-    .profile-card > *:not(.profile-card) {
-        display: none;
-    }
-
-    .profile-card {
-        overflow: auto;
-    }
-
-    /* Show other sections on scroll */
-    body::after {
-        content: '';
-        display: block;
-        height: 100vh;
-        width: 100%;
-    }
-
-    .panda-rooms-section,
-    .panda-gallery-section,
-    .panda-review-section,
-    .panda-booking-form-section {
-        display: none;
-    }
-}

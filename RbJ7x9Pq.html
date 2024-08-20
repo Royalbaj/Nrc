@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Govinda Bahadur Khatri</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/profile.css">
+    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+    
+</head>
+<body>
+    <div class="profile-card" data-name="Prakash Bhandari" data-phone="+356-7772 2254" data-email="prakash.bhandari93@gmail.com" data-url="https://cards.robaj.com/RbJ7x9Pq" data-post="MD / Tourist Ambassador" data-institution="Bhandari Brothers Group/ Nepal Government Malta">
+        <a href="https://cards.robaj.com/#reservation">
+            <img src="assets/images/logo.png" alt="Logo" class="logo">
+        </a>
+
+        <button class="report-btn" onclick="showReportForm()">
+            <i class="fas fa-flag report-icon"></i> 
+        </button>
+
+        <a href="login.html">
+            <i class="fas fa-cog settings-icon"></i>
+        </a>
+
+        <div class="profile-header">
+            <img src="assets/images/RbJ7x9Pq.png" alt="Profile Picture" class="profile-img">
+            <h1 class="profile-name">Prakash Bhandari</h1>
+            <p class="profile-post">MD / Tourist Ambassador</p>
+            <p class="profile-institution">Bhandari Brothers Group/ Nepal Government Malta</p>
+            <p class="profile-about">Prakash Bhandari is the Managing Director of Bhandari Brothers Group, an ISO Certified organization and proud holders of the DIER License. Under his leadership, the company ensures top-tier services in Outsourcing, Recruitment, and beyond, operating extensively across the EU. With a commitment to excellence, Prakash Bhandari plays a pivotal role in connecting businesses and individuals with the best opportunities and services available.</p>
+        </div>
+        <div class="profile-contact">
+            <button class="round-btn" onclick="saveContact()">Save Contact</button>
+            <a href="tel:+356-7772 2254" class="round-btn">Call</a>
+            <button class="round-btn" onclick="generateQR()">Share Profile</button>
+        </div>
+        <div class="profile-social-media">
+            <a href="https://www.facebook.com/bhandaribrothersgroup" class="social-media-link"><img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook"></a>
+            <a href="https://www.linkedin.com/in/prakash-bhandari-27aa62111/?originalSubdomain=mt" class="social-media-link"><img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg" alt="LinkedIn"></a>
+           <a href="https://wa.me/+356-7772 2254" class="social-media-link"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"></a>
+           <a href="https://www.bhandaribros.com/" class="social-media-link"><img src="assets/images/website.png" alt="Website"></a>
+        </div>
+        <div class="profile-contact-info" onclick="sendEmail()">
+            <p><i class="fas fa-envelope contact-icon"></i> prakash.bhandari93@gmail.com</p>
+        </div>
+        <div class="profile-contact-info" onclick="makeCall()">
+            <p><i class="fas fa-phone contact-icon"></i> Call: +356-7772 2254</p>
+        </div>
+        <div class="profile-location">
+            <p><i class="fas fa-map-marker-alt contact-icon"></i> 47 (Bhandari Brothers Group), Triq Ta' Mellu, Mosta MST3782, Malta</p>
+        </div>
+    </div>
+
+    <div id="qrModal" class="qr-modal">
+        <div class="qr-container">
+            <span class="qr-close" onclick="closeQRModal()">&times;</span>
+            <div id="qrcode"></div>
+            <button class="round-btn" onclick="downloadQR()">Download QR</button>
+        </div>
+    </div>
+
+    <div id="reportModal" class="report-modal" style="display: none;">
+        <div class="report-container">
+            <span class="report-close" onclick="closeReportForm()">&times;</span>
+            <h2>Report Profile</h2>
+            <form id="reportForm" class="report-form" onsubmit="submitReportForm(event)" autocomplete="off">
+                <div>
+                    <label for="name">Your Name:</label>
+                    <input type="text" id="entry.2089213951" name="entry.2089213951" required autocomplete="off">
+                </div>
+                <div>
+                    <label for="robajId">Your Robaj ID:</label>
+                    <input type="text" id="entry.824755958" name="entry.824755958" required autocomplete="off">
+                </div>
+                <div>
+                    <label for="reason">Describe Your Issue:</label>
+                    <textarea id="entry.1229325095" name="entry.1229325095" rows="4" required autocomplete="off"></textarea>
+                </div>
+                <button type="submit" class="round-btn">Submit</button>
+            </form>
+            <div id="successMessage" style="display: none; color: green; margin-top: 10px;">
+                Your issue has been registered and will be sorted out soon.
+            </div>
+        </div>
+    </div>
+<script src="assets/js/profile.js"></script>
+
+    
+</body>
+</html>
