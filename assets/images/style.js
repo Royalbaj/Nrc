@@ -14,6 +14,9 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
         { email: 'adhikarib2019@gmail.com', password: 'Ab2019#zy' },
         { email: 'krishnabhandari.info@gmail.com', password: 'Bhandarikrishna661#' },
         { email: 'prakash@bhandaribros.com', password: 'Pbros81#!' },
+        { email: 'bhandariroshan633@gmail.com', password: 'Roshan633!#' },
+        
+         
 
 
     ];
