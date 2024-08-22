@@ -16,7 +16,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
         { email: 'prakash@bhandaribros.com', password: 'Pbros81#!' },
         { email: 'bhandariroshan633@gmail.com', password: 'Roshan633!#' },
         { email: 'always4nation@gmail.com', password: 'Evergreen4nation#' },
-         { email: 'bhandariroshan633@gmail.com', password: 'Roshan633!#' },
+         { email: 'remkhanal@gmail.com', password: 'Rems787#@' }
         
          
 
