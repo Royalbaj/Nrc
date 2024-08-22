@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robaj Card Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.7);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input[type="text"],
+        .form-group textarea,
+        .form-group input[type="url"],
+        .form-group input[type="email"],
+        .form-group input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+            background-color: #333;
+            color: #fff;
+        }
+        .form-group textarea {
+            height: 100px;
+        }
+        .form-group input[type="file"] {
+            margin-top: 5px;
+            color: #ccc;
+        }
+        .form-group button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .form-group button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Enter Profile Data</h2>
+        <form id="profileForm" enctype="multipart/form-data">
+
+            
+            <div class="form-group">
+                <label for="entry.1828940464">Name:</label>
+                <input type="text" id="entry.1828940464" name="entry.1828940464" autocomplete="off" required>
+            </div>
+            <div class="form-group">
+                <label for="entry.665726325">Post:</label>
+                <input type="text" id="entry.665726325" name="entry.665726325" autocomplete="off" required>
+            </div>
+            <div class="form-group">
+                <label for="entry.144227107">Institution:</label>
+                <input type="text" id="entry.144227107" name="entry.144227107" autocomplete="off" required>
+            </div>
+            <div class="form-group">
+                <label for="entry.108430236">About:</label>
+                <textarea id="entry.108430236" name="entry.108430236" autocomplete="off" placeholder="Enter all of your details" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="entry.2015260885">Contact:</label>
+                <input type="text" id="entry.2015260885" name="entry.2015260885" autocomplete="off" placeholder="Enter contact information" required>
+            </div>
+            <div class="form-group">
+                <label for="entry.1911011612">G-mail:</label>
+                <input type="text" id="entry.1911011612" name="entry.1911011612" autocomplete="off" placeholder="Enter Your gmail " required>
+            </div>
+            <div class="form-group">
+                <label for="entry.1602000414">Location:</label>
+                <input type="text" id="entry.1602000414" name="entry.1602000414" autocomplete="off" placeholder="Enter location">
+            </div>
+            <div class="form-group">
+                <label for="entry.1082469198">Facebook URL:</label>
+                <input type="url" id="entry.1082469198" name="entry.1082469198" autocomplete="off" placeholder="Enter Facebook URL">
+            </div>
+            <div class="form-group">
+                <label for="entry.1701503764">LinkedIn URL:</label>
+                <input type="url" id="entry.1701503764" name="entry.1701503764" autocomplete="off" placeholder="Enter LinkedIn URL">
+            </div>
+            <div class="form-group">
+                <label for="entry.883803989">YouTube URL:</label>
+                <input type="url" id="entry.883803989" name="entry.883803989" autocomplete="off" placeholder="Enter YouTube URL">
+            </div>
+            <div class="form-group">
+                <label for="entry.1706646735">Twitter URL:</label>
+                <input type="url" id="entry.1706646735" name="entry.1706646735" autocomplete="off" placeholder="Enter Twitter URL">
+            </div>
+            <div class="form-group">
+                <label for="entry.899312574">Instagram URL:</label>
+                <input type="url" id="entry.899312574" name="entry.899312574" autocomplete="off" placeholder="Enter Instagram URL">
+            </div>
+            <div class="form-group">
+                <label for="entry.748253403">WhatsApp URL:</label>
+                <input type="url" id="entry.748253403" name="entry.748253403" autocomplete="off" placeholder="Enter WhatsApp URL">
+            </div>
+            <div class="form-group">
+                <label for="entry.153616655">Website URL:</label>
+                <input type="url" id="entry.153616655" name="entry.153616655" autocomplete="off" placeholder="Enter website URL">
+            </div>
+            <div class="form-group">
+                <label for="entry.491026138">Profile Picture:</label>
+                <input type="file" id="entry.491026138" name="entry.491026138">
+            </div>
+            <div class="form-group">
+                <button type="button" onclick="submitForm()">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function submitForm() {
+            const formData = new FormData(document.getElementById('profileForm'));
+            
+            fetch('https://docs.google.com/forms/d/e/1FAIpQLScwZpZ5OYJdcjOGV4KUIRfmNFXeQZVYuzTP3qd8wo8JoKOsaA/formResponse', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                alert('Form submitted successfully!');
+                document.getElementById('profileForm').reset();
+            })
+            .catch(error => {
+                console.error('Error submitting form:', error);
+                alert('Your Data has been submitted and is under verification, You will be notified soon via your email');
+            });
+        }
+    </script>
+</body>
+</html>
