@@ -419,6 +419,16 @@ body {
             text-align: center;
             cursor: pointer;
         }
+.profile-location a {
+  color: #cccccc; 
+  text-decoration: none;/
+}
+
+.profile-location a:hover {
+  color: white; 
+  text-decoration: none; 
+}
+
 
        
         .qr-modal {
