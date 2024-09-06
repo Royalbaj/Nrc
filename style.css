@@ -46,7 +46,7 @@ body {
 }
 
 .panda-romms-style {
-    color: #007BFF;
+    color: #ff0000;
 }
 
 .panda-rooms-wrapper {
@@ -127,7 +127,7 @@ body {
 }
 
 .panda-gellery-style {
-    color: #007BFF;
+    color: #ff0000;
 }
 
 .panda-gallery-wrapper {
@@ -160,7 +160,7 @@ body {
 }
 
 .panda-review-style {
-    color: #007BFF;
+    color: #ff0000;
 }
 
 .panda-review-wrapper {
@@ -265,14 +265,15 @@ body {
 
 /* Profile Section */
  .profile-card {
-            background-color: #333;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            max-width: 90%;
-            text-align: center;
-            overflow: hidden;
-            position: relative; 
-        }
+    background-color: #333;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 90%;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    margin: 0 auto; /* Centers the profile card on larger screens */
+}
  .logo {
             position: absolute;
             top: 20px;
@@ -524,17 +525,20 @@ body {
 
         
         @media (max-width: 768px) {
-            body {
-                flex-direction: column;
-            }
+    body {
+        flex-direction: column;
+        margin: 0; /* Removes any margin that might cause sideways sliding */
+        overflow-x: hidden; /* Ensures no horizontal scrolling */
+    }
 
-            .profile-card {
-                background-color: transparent;
-                box-shadow: none;
-                padding: 0;
-                max-width: 100%;
-                margin: 0;
-            }
+    .profile-card {
+        background-color: transparent;
+        box-shadow: none;
+        padding: 0;
+        max-width: 100%;
+        margin: 0 auto; /* Centers the card */
+        overflow-x: hidden; /* Prevents sliding on smaller devices */
+    }
 
             .profile-name {
                 font-size: 28px;
