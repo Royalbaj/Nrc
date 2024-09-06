@@ -527,7 +527,7 @@ body {
         @media (max-width: 768px) {
     body {
         flex-direction: column;
-        margin: 0; /* Removes any margin that might cause sideways sliding */
+        margin-top: 10px; /* Removes any margin that might cause sideways sliding */
         overflow-x: hidden; /* Ensures no horizontal scrolling */
     }
 
