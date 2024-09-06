@@ -525,10 +525,22 @@ body {
 
         
         @media (max-width: 768px) {
+   @media (max-width: 768px) {
     body {
+        display: flex;
         flex-direction: column;
-        margin-top: 10px; /* Removes any margin that might cause sideways sliding */
-        overflow-x: hidden; /* Ensures no horizontal scrolling */
+        align-items: center; /* Center all content horizontally */
+        margin-top: 10px;
+        overflow-x: hidden;
+    }
+
+    .profile-card, .panda {
+        max-width: 100%;
+        margin: 0 auto;
+        text-align: center;
+        padding: 10px;
+        box-shadow: none; /* Remove shadow for a cleaner mobile look */
+        overflow-x: hidden;
     }
 
     .profile-card {
@@ -536,38 +548,38 @@ body {
         box-shadow: none;
         padding: 0;
         max-width: 100%;
-        margin: 0 auto; /* Centers the card */
-        overflow-x: hidden; /* Prevents sliding on smaller devices */
     }
 
-            .profile-name {
-                font-size: 28px;
-            }
+    .profile-name {
+        font-size: 28px;
+    }
 
-            .profile-post,
-            .profile-institution {
-                font-size: 16px;
-            }
+    .profile-post, .profile-institution {
+        font-size: 16px;
+    }
 
-            .profile-about {
-                font-size: 14px;
-                max-width: 100%;
-            }
+    .profile-about {
+        font-size: 14px;
+        max-width: 100%;
+    }
 
-            .round-btn {
-                padding: 10px 20px;
-            }
+    .round-btn {
+        padding: 10px 20px;
+    }
 
-            .social-media-link img {
-                width: 30px;
-                height: 30px;
-            }
+    .social-media-link img {
+        width: 30px;
+        height: 30px;
+    }
 
-            .profile-contact-info {
-                font-size: 14px;
-            }
+    .profile-contact-info, .profile-location {
+        font-size: 14px;
+    }
 
-            .profile-location {
-                font-size: 14px;
-            }
-        }
+    .panda {
+        width: 100%;
+        padding: 10px;
+        margin: 0;
+    }
+}
+
