@@ -2,8 +2,7 @@ function saveContact() {
     const profileCard = document.querySelector('.profile-card');
     const name = profileCard.getAttribute('data-name');
     const phone = profileCard.getAttribute('data-phone');
-    const phone2 = profileCard.getAttribute('data-phone2');
-    const email = profileCard.getAttribute('data-email');
+   const email = profileCard.getAttribute('data-email');
     const url = profileCard.getAttribute('data-url');
     const post = profileCard.getAttribute('data-post');
     const institution = profileCard.getAttribute('data-institution');
@@ -25,7 +24,7 @@ URL;CHARSET=UTF-8:${url}`;
 
  if (phone2) {
         vCardData += `
-TEL;CHARSET=UTF-8:${phone2};TYPE=WORK,VOICE`;
+TEL;CHARSET=UTF-8:${phone2}`;
     }    
 if (post) {
         vCardData += `
