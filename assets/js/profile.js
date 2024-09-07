@@ -21,11 +21,7 @@ FN;CHARSET=UTF-8:${name}
 TEL;CHARSET=UTF-8:${phone}
 EMAIL;CHARSET=UTF-8:${email}
 URL;CHARSET=UTF-8:${url}`;
-
- if (phone2) {
-        vCardData += `
-TEL;CHARSET=UTF-8:${phone2}`;
-    }    
+   
 if (post) {
         vCardData += `
 TITLE;CHARSET=UTF-8:${post}`;
