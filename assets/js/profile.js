@@ -20,13 +20,12 @@ VERSION:3.0
 N;CHARSET=UTF-8:${lastName};${firstName};;;
 FN;CHARSET=UTF-8:${name}
 TEL;CHARSET=UTF-8:${phone}
-TEL;CHARSET=UTF-8:${phone2}
 EMAIL;CHARSET=UTF-8:${email}
 URL;CHARSET=UTF-8:${url}`;
 
  if (phone2) {
         vCardData += `
-TEL;CHARSET=UTF-8:${phone2}`;
+TEL;CHARSET=UTF-8:${phone2};TYPE=WORK,VOICE`;
     }    
 if (post) {
         vCardData += `
