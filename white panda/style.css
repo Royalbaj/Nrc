@@ -593,4 +593,18 @@ body {
         margin: 0;
     }
 }
+.messenger-icon {
+    position: fixed;
+    bottom: 80px; /* Adjust to position the icon */
+    right: 30px;  /* Adjust to move the icon to the left */
+    width: 50px;  /* Set the desired width of the image */
+    height: 50px; /* Set the desired height of the image */
+    z-index: 1000; /* Ensure it stays on top of other elements */
+}
+
+.messenger-icon img {
+    width: 100%;  /* Make the image take up the full width */
+    height: 100%; /* Make the image take up the full height */
+    object-fit: contain; /* Ensure the image maintains its aspect ratio */
+}
 
