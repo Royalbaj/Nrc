@@ -641,42 +641,25 @@ margin-top: 10px;
         gap: 8px;
     }
 }
-.panda-review-write {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    left: 20px; 
-    font-size: 18px;
-    font-weight: bold;
-    z-index: 1000;
-    text-align: center; 
+.panda-review-button-container {
+    text-align: center;
+    margin-top: 20px;
 }
 
-.panda-review-write a {
-    color: white !important;
-    text-decoration: none;
-    font-family: 'Arial', sans-serif;
+.panda-review-button {
+    display: inline-block;
     padding: 10px 20px;
-    border: 2px solid #f5b041;
-    border-radius: 30px;
-    background-color: transparent;
-    transition: all 0.3s ease;
-}
-
-.panda-review-write a:hover {
-    background-color: #f5b041;
     color: white;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    background: transparent;
+    border: 2px solid goldenrod;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s, border-color 0.3s;
 }
 
-/* Mobile Specific Styles */
-@media only screen and (max-width: 768px) {
-    .panda-review-write {
-        bottom: 60px; 
-        right: 0;
-        left: 0;
-        font-size: 16px;
-        margin: 0 auto;
-    }
+.panda-review-button:hover {
+    background-color: goldenrod;
+    border-color: goldenrod;
 }
-
