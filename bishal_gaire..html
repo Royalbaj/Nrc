@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bishal Gaire</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/profile.css">
+    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+    
+</head>
+<body>
+    <div class="profile-card" data-name="Bishal Gaire" data-phone="+977-9817542036" data-email="mail@bishalgaire.info.np" data-url="https://www.bishalgaire.info.np" data-post="Founder" data-institution="ROBAJ / Link a Job">
+        <a href="https://cards.robaj.com/#reservation">
+            <img src="assets/images/logo.png" alt="Logo" class="logo">
+        </a>
+
+        <button class="report-btn" onclick="showReportForm()">
+            <i class="fas fa-flag report-icon"></i> 
+        </button>
+
+        <a href="login.html">
+            <i class="fas fa-cog settings-icon"></i>
+        </a>
+
+        <div class="profile-header">
+            <img src="assets/images/bishal_gaire.png" alt="Profile Picture" class="profile-img">
+            <h1 class="profile-name">Bishal Gaire</h1>
+            <p class="profile-post"></p>
+            <p class="profile-institution"></p>
+            <p class="profile-about"></p>
+        </div>
+        <div class="profile-contact">
+            <button class="round-btn" onclick="saveContact()">Save Contact</button>
+            <a href="tel:+977-9817542036" class="round-btn">Call</a>
+            <button class="round-btn" onclick="generateQR()">Share Profile</button>
+        </div>
+        <div class="profile-social-media">
+                       <a href="https://wa.me/9779817542036" class="social-media-link"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"></a>
+                    </div>
+        <div class="profile-contact-info" onclick="sendEmail()">
+            <p><i class="fas fa-envelope contact-icon"></i> mail@bishalgaire.info.np</p>
+        </div>
+        <div class="profile-contact-info" onclick="makeCall()">
+            <p><i class="fas fa-phone contact-icon"></i> Call: +977-9817542036</p>
+        </div>
+        <div class="profile-location">
+            <p><i class="fas fa-map-marker-alt contact-icon"></i> Tilottama Rupandehi, Nepal</p>
+        </div>
+    </div>
+
+    <div id="qrModal" class="qr-modal">
+        <div class="qr-container">
+            <span class="qr-close" onclick="closeQRModal()">&times;</span>
+            <div id="qrcode"></div>
+            <button class="round-btn" onclick="downloadQR()">Download QR</button>
+        </div>
+    </div>
+
+    <div id="reportModal" class="report-modal" style="display: none;">
+        <div class="report-container">
+            <span class="report-close" onclick="closeReportForm()">&times;</span>
+            <h2>Report Profile</h2>
+            <form id="reportForm" class="report-form" onsubmit="submitReportForm(event)" autocomplete="off">
+                <div>
+                    <label for="name">Your Name:</label>
+                    <input type="text" id="entry.2089213951" name="entry.2089213951" required autocomplete="off">
+                </div>
+                <div>
+                    <label for="robajId">Your Robaj ID:</label>
+                    <input type="text" id="entry.824755958" name="entry.824755958" required autocomplete="off">
+                </div>
+                <div>
+                    <label for="reason">Describe Your Issue:</label>
+                    <textarea id="entry.1229325095" name="entry.1229325095" rows="4" required autocomplete="off"></textarea>
+                </div>
+                <button type="submit" class="round-btn">Submit</button>
+            </form>
+            <div id="successMessage" style="display: none; color: green; margin-top: 10px;">
+                Your issue has been registered and will be sorted out soon.
+            </div>
+        </div>
+    </div>
+<script src="assets/js/profile.js"></script>
+
+    
+</body>
+</html>
