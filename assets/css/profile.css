@@ -315,3 +315,11 @@ body {
                 font-size: 14px;
             }
         }
+.profile-location .location-link {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .profile-location .location-link:hover {
+        color: #1e90ff; 
+    }
