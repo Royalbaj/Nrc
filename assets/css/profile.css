@@ -315,11 +315,3 @@ body {
                 font-size: 14px;
             }
         }
-.location-link {
-    text-decoration: none;
-    color: inherit;
-}
-
-.location-link:hover {
-    color: #007bff;
-}
